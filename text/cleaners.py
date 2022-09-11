@@ -140,13 +140,15 @@ def japanese_cleaner_3(text):
       sub_text = sub_part1 + sub_part2
       new_text += sub_text
     # low high low
-    else:
+    elif '↑|↓' in part:
       sub_parts = re.split('↑|↓', part)
       sub_part1 = add_tone(sub_parts[0], True)
       sub_part2 = add_tone(sub_parts[1], False)
       sub_part3 = add_tone(sub_parts[2], True)
       sub_text = sub_part1 + sub_part2 + sub_part3
       new_text += sub_text
+    else:
+      new_text += add_tone(part, True)
 
   # revision
   for item in _revision_jp.items():
